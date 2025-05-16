@@ -1,5 +1,6 @@
 package com.airfranceklm.fasttrack.assignment.dto;
 
+import com.airfranceklm.fasttrack.assignment.Entity.EmployeeHoliday;
 import lombok.Data;
 
 import java.util.Date;
@@ -18,5 +19,16 @@ public class EmployeeHolidayDto {
     private Date endOfHoliday;
 
     private String status;
+
+    public EmployeeHolidayDto() {}
+
+    public EmployeeHolidayDto(EmployeeHoliday employeeHoliday) {
+        this.holidayId = employeeHoliday.getHolidayId();
+        this.employeeId = employeeHoliday.getEmployee().getEmployeeId();
+        this.holidayLabel = employeeHoliday.getHolidayLabel();
+        this.startOfHoliday = employeeHoliday.getStartOfHoliday();
+        this.endOfHoliday = employeeHoliday.getEndOfHoliday();
+        this.status = employeeHoliday.getStatus().toString();
+    }
 
 }

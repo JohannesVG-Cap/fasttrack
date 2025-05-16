@@ -15,7 +15,7 @@ public interface EmployeeHolidayRepository extends CrudRepository<EmployeeHolida
 
     @Query(nativeQuery = true,
     value = """
-        SELECT * FROM EmployeeHoliday 
+        SELECT * FROM EmployeeHoliday
         where status in ("DRAFT","REQUESTED","SCHEDULED")
 """)
     List<EmployeeHoliday> findEmployeeHolidaysByAvailability();

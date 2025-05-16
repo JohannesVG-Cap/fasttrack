@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class EmployeeHolidayService {
@@ -30,8 +32,18 @@ public class EmployeeHolidayService {
         return this.employeeRepository.findById(employeeId).orElseThrow(() -> new EmployeeNotFoundException(employeeId));
     }
 
+    public List<Employee> getAllEmployees() {
+        Iterable<Employee> employeeIterable = this.employeeRepository.findAll();
+        return StreamSupport.stream(employeeIterable.spliterator(), false)
+                .collect(Collectors.toList());
+    }
+
     public List<EmployeeHoliday> getEmployeeHolidaysByEmployeeId(String employeeId) throws EmployeeNotFoundException {
         return employeeHolidayRepository.getEmployeeHolidayByEmployee(getEmployeeById(employeeId));
+    }
+
+    public List<EmployeeHoliday> getAllEmployeeHolidays()   {
+        return employeeHolidayRepository.findEmployeeHolidaysByAvailability();
     }
 
     public EmployeeHoliday saveEmployeeHoliday(EmployeeHolidayDto holidayRequest) throws EmployeeNotFoundException, HolidayOverlapException, InvalidHolidayStartDateException {
