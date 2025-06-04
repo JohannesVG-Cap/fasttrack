@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fasttrack
+  annotations:
+    github.com/project-slug: JohannesVG-Cap/fasttrack
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests
