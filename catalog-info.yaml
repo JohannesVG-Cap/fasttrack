@@ -11,5 +11,3 @@ spec:
   coder:
     templateName: "devcontainers"
     mode: "auto"
-    params:
-      repo: "custom"
