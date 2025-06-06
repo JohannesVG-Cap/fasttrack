@@ -8,7 +8,8 @@ spec:
   type: other
   lifecycle: unknown
   owner: guests
-  coder:
-    templateName: "devcontainers"
-    mode: "auto"
-
+coder:
+  templateName: "devcontainers"
+  mode: "auto"
+  params:
+    repo: "custom"
